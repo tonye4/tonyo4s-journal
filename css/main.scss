@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4em;
+    overflow-y: hidden;
+}
+
+.container {
+    display: flex;
+    border: red 2px solid;
+    width: 60%;
+    height: 40em;
+}
+
+header {
+    position: absolute;
+    z-index: 999;
+    top: 40px;
+}
+
+.main {
+    display: grid;
+    //border: solid 2px red;
+    grid-template-columns: 1fr 15%;
+}
+
+.left-main {
+    grid-area: 1 1 2 2;
+    overflow-y: scroll;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    border: red 2px solid;
+    grid-area: 2 1 3 2;
+}
