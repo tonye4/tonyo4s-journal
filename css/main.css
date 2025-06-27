@@ -1,38 +1,108 @@
+:root {
+  --primary-bg: black;
+  --h2-bg: #b4b6d1;
+  --basic-border: #3c3d3c solid 4px;
+}
+
+@font-face {
+  font-family: PixelGame;
+  src: url(/resources/PixelGame-R9AZe.otf);
+}
 body {
+  color: white;
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4em;
+  padding-top: 2em;
   overflow-y: hidden;
 }
 
 .container {
   display: flex;
-  border: red 2px solid;
   width: 60%;
   height: 40em;
 }
 
 header {
-  position: absolute;
-  z-index: 999;
-  top: 40px;
+  display: flex;
+  margin: 0;
+  width: 60%;
+  border: 2px red solid;
+  justify-content: space-between;
+}
+header h1 {
+  font-size: 60px;
+  font-family: PixelGame;
+  margin-bottom: 0;
+}
+header .music-player {
+  border: 2px red solid;
 }
 
 .main {
   display: grid;
+  gap: 0.5em;
   grid-template-columns: 1fr 15%;
+}
+.main h2 {
+  background-color: var(--h2-bg);
+}
+.main footer {
+  border: var(--basic-border);
+  background-color: var(--primary-bg);
+  width: 100%;
 }
 
 .left-main {
-  grid-area: 1 1 2 2;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-area: 1/1/2/2;
   overflow-y: scroll;
+  border-top: #3c3d3c solid 4px;
+}
+.left-main #about-me {
+  background-color: var(--primary-bg);
+  border-right: #3c3d3c solid 4px;
+  border-left: #3c3d3c solid 4px;
+  border-bottom: #3c3d3c solid 4px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.left-main #about-me #about-me-container {
+  display: flex;
+}
+.left-main #about-me #profile-gif {
+  border: var(--basic-border);
+  width: 8.5em;
+  margin-right: 1.2em;
+  margin-bottom: 1em;
+}
+.left-main #project-showcase {
+  border: var(--basic-border);
+  background-color: var(--primary-bg);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.left-main #left-blog {
+  border: var(--basic-border);
+  background-color: var(--primary-bg);
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  border: red 2px solid;
+  border: var(--basic-border);
   grid-area: 2 1 3 2;
+  background-color: var(--primary-bg);
+}
+
+video {
+  position: absolute;
+  z-index: -1;
 }/*# sourceMappingURL=main.css.map */

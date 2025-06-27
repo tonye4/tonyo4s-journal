@@ -9,24 +9,31 @@
 </head>
 
 <body>
+    <header>
+        <h1>TONYO4's D<i>E</i>N</h1>
+        <div class="music-player"></div>
+    </header>
     <div class="container">
-        <header>
-            <h1>TONYO4's D<i>E</i>N</h1>
-        </header>
         <!-- Add a verse of the day thingy! -->
         <div class="main">
-            <div class="left-main">
+            <div class="left-main"> <!-- Alternate approach is using an iframe and making left-main it's own page.-->
                 <div id="about-me">
                     <h2>Hello!! Welcome to my little nook of the internet!!</h2>
-                    <img id="profile-gif" src="./resources/mwah-cat-mwah.gif">
+                    <div id="about-me-container">
+                        <img id="profile-gif" src="./resources/mwah-cat-mwah.gif">
+                        <p>
+                            This is my silly little website/blog where I'll be posting what I'm up to,
+                            projects or just
+                            random thoughts etc..
+                            :^)
+                            <br>
+                            <br>
+                            I created this website just because the YouTube algorithim
+                            kept harrashing me with indie webpage videos and I eventually caved and started binge
+                            surfing webrings sooooo here we are :D
+                        </p>
 
-                    <p>
-                        This is my silly little website/blog where I'll be posting what I'm up to,
-                        projects or just
-                        random thoughts etc..
-                        :^)
-                    </p>
-
+                    </div>
                     <span>mildly fun facts!</span>
 
                     <ul>
@@ -35,11 +42,12 @@
                             free
                             time (very allergic to her btw). </li>
                         <li>I like to learn random skills for fun <a href="#">more on that here!</a></li>
-                        <li>I'm a volunteer campus paramedic and work as dispatcher at my university!</li>
+                        <li>I'm a volunteer campus paramedic and work as dispatcher for my university!</li>
                         <li>Being sweaty is the bane of my existance D:< </li>
                     </ul>
                 </div>
-                <div id="heat-map">
+                <div id="project-showcase">
+                    <h2>¡Projects!</h2>
                     <img src="https://ghchart.rshah.org/tonye4" alt="tonye4's Github chart" />
                 </div>
                 <div id="left-blog">
@@ -86,8 +94,10 @@
                 </p>
             </footer>
         </div>
-        </footer>
     </div>
+    <video autoplay loop muted id="bg">
+        <source src="resources/undertale-snowy-forest.1920x1080.mp4">
+    </video>
 </body>
 
 </html>
