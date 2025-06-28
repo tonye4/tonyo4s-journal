@@ -6,12 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonyo4</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/002a9c356b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
         <h1>TONYO4's D<i>E</i>N</h1>
-        <div class="music-player"></div>
+        <div class="music-player">
+            <nav class="music-ctrls">
+
+                <i class="fa-solid fa-angle-left"></i>
+
+                <i class="fa-solid fa-pause"></i>
+
+                <i class="fa-solid fa-play"></i>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </nav>
+            <img src="resources/nicopaddyshop.jpg" class="song-img" alt="Nicopaddy shop song cover">
+            <h2>Shop</h2>
+            <p>Nicopaddy</p>
+            <audio controls>
+                <source src="resources/nico's nextbots ost - shop.mp3" type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="volume">
+        </div>
     </header>
     <div class="container">
         <!-- Add a verse of the day thingy! -->
