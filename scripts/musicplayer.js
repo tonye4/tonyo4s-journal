@@ -7,10 +7,10 @@ prevBtn = document.getElementById('prev'),
 nextBtn= document.getElementById('next'),
 pauseBtn = document.getElementById('pause'),
 playBtn = document.getElementById('play'),
-currentTimeEl = document.getElementById('current-time'),
+currentTimeEl = document.getElementById('curr-time'),
 durationEl = document.getElementById('duration'),
 progress = document.getElementById('progress'),
-playerProgress = document.getElementById('player-progress'),
+playerProgress = document.getElementById('music-progress'),
 
 const music  = new Audio();
 
@@ -62,10 +62,10 @@ function pauseMusic() {
     isPlaying = false;
 
     // Replaces the fontawesome icons w/ the class names pause and play.
-    playBtn.classList.replace('fa-pause', 'fa-play'); // replaces fa-play with fa-pause?
+    playBtn.classList.replace('fa-pause', 'fa-play'); // fa-play is a class and it's replaced with fa-pause which is just the other fontawesome icon.
     
     // Cool hover
-    playBtn.setAttribute('title', 'pause');
+    playBtn.setAttribute('title', 'play'); //??? why do???
     music.pause();
 }
 
@@ -83,12 +83,32 @@ function changeMusic(direction){
 }
 
 function updateProgressBar(){
-    const {duration, currentTime} = music; 
+    const { duration, currentTime } = music; 
     const progressPercent = (currentTime / duration) * 100; 
     progress.style.width = `${progressPercent}%`; // embed that thang cuzzo
 
+    // Time is rounded down to nearest whole number then converted to a string and is given padding at the start 0 
+    // if the string is shorter than 1 char long.
     const formatTime = (time) => String(Math.floor(time)).padStart(1, '0');
-    durationEl.textContent = `${duration/60}:${formatTime(duration % 60)}`; 
-    currentTimeEl.textContent = `${currentTime/60}:${formatTime(currentTime % 60)}`; 
+
+    // duration / 60 gives us the minutes (is also rounded down by Math.floor in formatTime fn) and the duration % 60 gives us the seconds.
+    durationEl.textContent = `${formatTime(duration / 60)}:${formatTime(duration % 60)}`;  
+    currentTimeEl.textContent = `${formatTime(currentTime / 60)}:${formatTime(currentTime % 60)}`
 }
 
+// Changes the time of the music depending on the click.
+function setProgressbar(e) {
+    const width = playerProgress.clientWidth; // returns playerProgress element's width excluding borders and margins.
+    const clickX = e.offsetX; // xCoordinate of the event click.
+    // Gives us the position of the click (ie a decimal between 0 and 1) which gives us decimal percentage of the song in decimal form.
+    music.currentTime = (clickX / width) * music.duration;
+}
+
+playerBtn.addEventListener('click', togglePlay);
+prevBtn.addEventListener('click', () => changeMusic(-1));
+nextBtn.addEventListener('click', () => changeMusic(1));
+music.addEventListener('ended', changeMusic(1));
+playerBtn.addEventListener('timeupdate', updateProgressBar);
+playerProgress.addEventListener('click', setProgressbar);
+
+loadMusic(songs[musicIndex]);
