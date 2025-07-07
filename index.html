@@ -7,42 +7,11 @@
     <title>Tonyo4</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/002a9c356b.js" crossorigin="anonymous"></script>
-    <script src="./scripts/musicplayer.js"></script>
 </head>
 
 <body>
     <header>
         <h1>TONYO4's D<i>E</i>N</h1>
-        <div class="music-player">
-
-            <img src="" id="cover">
-            <h2 id="music-title"></h2>
-            <h3 id="music-artist"></h3>
-
-            <div class="music-progress" id="music-progress">
-                <div class="progress" id="progress"></div>
-                <div class="music-duration">
-                    <span id="curr-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
-            </div>
-
-            <nav class="music-ctrls">
-
-                <i class="fa-solid fa-angle-left" id="prev"></i>
-
-                <i class="fa-solid fa-play" id="play"></i>
-
-                <i class="fa-solid fa-angle-right" id="next"></i>
-
-            </nav>
-            <!--
-            <audio controls>
-                <source src="resources/nicos nextbots ost - shop.mp3" type="audio/mpeg">
-            </audio>
-            <input type="range" value="0" id="volume">
-        -->
-        </div>
     </header>
     <div class="container">
         <!-- Add a verse of the day thingy! -->
@@ -89,7 +58,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="sidebar">
                 <!--
                 <ul id="socials">
@@ -117,6 +85,35 @@
                     
                 </div>
                 -->
+
+                <div class="music-player">
+                    <div class="music-info">
+                        <img src="" id="cover">
+                        <p id="song-num"></p>
+                        <p id="music-title"></p>
+                        <p id="music-artist"></p>
+                    </div>
+                    <div class="prog-bar">
+                        <div class="music-progress" id="music-progress">
+                            <div class="progress" id="progress"></div>
+                            <div class="music-duration">
+                                <p id="curr-time">0:00</p>
+                                <p id="duration">0:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="music-ctrls">
+
+                        <i class="fa-solid fa-angle-left" title="Previous" id="prev"></i>
+
+                        <i class="fa-solid fa-play" title="Play" id="play"></i>
+
+                        <i class="fa-solid fa-angle-right" title="Next" id="next"></i>
+
+                    </nav>
+                </div>
+
             </div>
             <footer>
                 <p></p>
@@ -130,5 +127,6 @@
         <source src="resources/undertale-snowy-forest.1920x1080.mp4">
     </video>
 </body>
+<script src="./scripts/musicplayer.js"></script> <!-- Stops script from loading before page. -->
 
 </html>

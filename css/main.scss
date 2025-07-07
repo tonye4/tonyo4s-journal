@@ -31,47 +31,15 @@ header {
     display: flex;
     margin: 0;
     width: 60%;
-    border: 2px red solid;
+    // border: 2px red solid;
     justify-content: space-between;
 
     h1 {
-        font-size: 60px;
+        font-size: 45px;
         font-family: PixelGame;
         margin-bottom: 0;
     }
 
-    .music-player {
-        width: 25%;
-        border: 2px red solid;
-
-        nav {
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        .song-img {
-            width: 30%;
-            border: 2px solid #fff;
-            box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
-        }
-
-        h2 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 1px;
-        }
-
-        p {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        #volume {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 2px;
-            background: #f53192;
-            border-radius: 4px;
-        }
-    }
 }
 
 .main {
@@ -80,13 +48,13 @@ header {
     grid-template-columns: 1fr 15%;
 
     h2 {
-        background-color: var(--h2-bg);
+        // background-color: var(--h2-bg);
     }
 
     footer {
         border: var(--basic-border);
         background-color: var(--primary-bg);
-        width: 100%;
+        width: 125.5%;
     }
 }
 
@@ -97,13 +65,13 @@ header {
     grid-template-rows: 1fr 1fr 1fr;
     grid-area: 1/1/2/2;
     overflow-y: scroll;
-    border-top: #3c3d3c solid 4px;
 
     #about-me {
         background-color: var(--primary-bg);
         border-right: #3c3d3c solid 4px;
         border-left: #3c3d3c solid 4px;
         border-bottom: #3c3d3c solid 4px;
+        border-top: #3c3d3c solid 4px;
         padding-left: 1em;
         padding-right: 1em;
 
@@ -138,10 +106,110 @@ header {
 .sidebar {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     // border: red 2px solid
     border: var(--basic-border);
     grid-area: 2 1 3 2;
     background-color: var(--primary-bg);
+    width: 12em;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .music-player {
+        display: grid;
+        grid-template-rows: 1fr 0.5fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 20%;
+
+        .progress {
+            background-color: #212121;
+            border-radius: 5px;
+            height: 100%;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            grid-area: 1 / 1 / 2 / 4;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            //border: 2px solid red;
+
+            p {
+                font-size: 0.8em;
+                font-weight: 100;
+                margin: 0;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            #music-title {
+                padding-left: 100%;
+                animation: glide 10s linear infinite;
+            }
+
+            @keyframes glide {
+                0% {
+                    transform: translateX(0%);
+                }
+
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+        }
+
+
+
+        .prog-bar {
+            // border: 2px solid red;
+            grid-area: 2 / 1 / 3 / 4;
+            display: flex;
+            justify-content: center;
+
+            .music-progress {
+                background-color: white;
+                border-radius: 2em;
+                cursor: pointer;
+                height: 0.2em;
+                width: 95%;
+                // border: 2px red solid;
+
+                .music-duration {
+                    display: flex;
+                    justify-content: space-between;
+
+                    p {
+                        font-family: 'Courier New', Courier, monospace;
+                        font-size: 0.8em;
+                        margin-top: 0.5em;
+                    }
+                }
+            }
+        }
+
+        .music-ctrls {
+            grid-area: 3/1/4/4;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0.85em;
+        }
+
+        #play,
+        #prev,
+        #next {
+            cursor: pointer;
+        }
+    }
+
 }
 
 

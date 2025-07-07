@@ -1,6 +1,6 @@
 // Used https://www.youtube.com/watch?v=KndQpfPkOOY
 
-const image = document.getElementById('cover'),
+const // image = document.getElementById('cover'),
 title = document.getElementById('music-title'),
 artist = document.getElementById('music-artist'),
 prevBtn = document.getElementById('prev'),
@@ -10,7 +10,8 @@ playBtn = document.getElementById('play'),
 currentTimeEl = document.getElementById('curr-time'),
 durationEl = document.getElementById('duration'),
 progress = document.getElementById('progress'),
-playerProgress = document.getElementById('music-progress'),
+songNum = document.getElementById('song-num')
+playerProgress = document.getElementById('music-progress');
 
 const music  = new Audio();
 
@@ -18,19 +19,19 @@ const songs = [
     {
         path: 'resources/nicos nextbots ost - shop.mp3',
         displayName: 'shop',
-        cover: 'resources/nicopaddyshop.jpg',
+        //cover: 'resources/nicopaddyshop.jpg',
         artist: 'Nicopaddy',
     },
     {
         path: 'resources/my thoughts are stored on a USB drive.mp3',
         displayName: 'my thoughts are stored on a USB drive',
-        cover: 'resources/usbDriveOverscorn.jpg',
+        //cover: 'resources/usbDriveOverscorn.jpg',
         artist: 'Overscorn',
     },
     {
         path: 'resources/alpine racer.mp3',
         displayName: 'Alpine Racer',
-        cover: 'resources/alpineRacerProloxx.jpg',
+        //cover: 'resources/alpineRacerProloxx.jpg',
         artist: 'Proloxx',
     },
 ];
@@ -54,7 +55,7 @@ function playMusic() {
     playBtn.classList.replace('fa-play', 'fa-pause');
     
     // Cool hover
-    playBtn.setAttribute('title', 'pause');
+    playBtn.setAttribute('title', 'Pause');
     music.play();
 }
 
@@ -65,7 +66,7 @@ function pauseMusic() {
     playBtn.classList.replace('fa-pause', 'fa-play'); // fa-play is a class and it's replaced with fa-pause which is just the other fontawesome icon.
     
     // Cool hover
-    playBtn.setAttribute('title', 'play'); //??? why do???
+    playBtn.setAttribute('title', 'Play'); //??? why do???
     music.pause();
 }
 
@@ -73,11 +74,17 @@ function loadMusic(song) {
     music.src = song.path;
     title.textContent = song.displayName;
     artist.textContent = song.artist;
-    image.src = song.cover;
+    songNum.textContent = `${musicIndex + 1} of ${songs.length}`;
+    //image.src = song.cover;
 }
 
 function changeMusic(direction){
-    musicIndex = (musicIndex + direction + songs.length) % songs.length; // Make sure the index stays within the amt of songs. 
+    musicIndex = (musicIndex + direction + songs.length) % songs.length; // Make sure the index stays within the amt of songs.
+    /* 
+    if (direction = 1)
+        musicIndex++;
+    else if (direction = -1)
+        musicIndex--;*/ 
     loadMusic(songs[musicIndex]);
     playMusic();
 }
@@ -104,11 +111,15 @@ function setProgressbar(e) {
     music.currentTime = (clickX / width) * music.duration;
 }
 
-playerBtn.addEventListener('click', togglePlay);
+loadMusic(songs[musicIndex]);
+
+playBtn.addEventListener('click', togglePlay);
 prevBtn.addEventListener('click', () => changeMusic(-1));
 nextBtn.addEventListener('click', () => changeMusic(1));
-music.addEventListener('ended', changeMusic(1));
-playerBtn.addEventListener('timeupdate', updateProgressBar);
+music.addEventListener("ended", () => changeMusic(1));
+music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressbar);
 
-loadMusic(songs[musicIndex]);
+//console.log(musicIndex);
+// console.log(songs[musicIndex].displayName);
+//loadMusic(songs[musicIndex]);
